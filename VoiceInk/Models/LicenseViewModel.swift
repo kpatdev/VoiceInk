@@ -9,7 +9,7 @@ class LicenseViewModel: ObservableObject {
         case licensed
     }
     
-    @Published private(set) var licenseState: LicenseState = .trial(daysRemaining: 7)  // Default to trial
+    @Published private(set) var licenseState: LicenseState = .licensed
     @Published var licenseKey: String = ""
     @Published var isValidating = false
     @Published var validationMessage: String?
@@ -19,9 +19,7 @@ class LicenseViewModel: ObservableObject {
     private let polarService = PolarService()
     private let userDefaults = UserDefaults.standard
     
-    init() {
-        loadLicenseState()
-    }
+    init() {}
     
     func startTrial() {
         // Only set trial start date if it hasn't been set before
